@@ -30,7 +30,7 @@ func _physics_process(delta):
 	if (force.length() > 0):
 		apply_central_force(force)
 		pass
-	# print("right: " + str(transform.x))
+	# print("turn_right: " + str(transform.x))
 	# print("up:" + str(transform.y))
 	
 	if Input.is_action_pressed("fire") and can_fire:
