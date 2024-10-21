@@ -35,23 +35,24 @@ script = ExtResource("1_axhlv")
 position = Vector2(-6, 0)
 shape = SubResource("CapsuleShape2D_m1l5n")
 
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
-texture = ExtResource("2_mfn81")
-
 [node name="Marker2D" type="Marker2D" parent="CharacterBody2D"]
 position = Vector2(39, 10)
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="CharacterBody2D/Marker2D"]
+[node name="CharacterBody2D2" type="CharacterBody2D" parent="."]
+position = Vector2(42, 12)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Marker2D/CharacterBody2D"]
-scale = Vector2(1, 1)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D2"]
 shape = SubResource("RectangleShape2D_mxbyw")
 
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D/Marker2D/CharacterBody2D"]
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D2"]
 position = Vector2(2.18501e-05, -0.000607625)
 rotation = 1.56688
 scale = Vector2(0.619662, 0.47898)
 texture = ExtResource("3_8keyc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(3, 2)
+texture = ExtResource("2_mfn81")
 
 [node name="Node" type="Node" parent="."]
 
