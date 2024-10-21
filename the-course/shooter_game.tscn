@@ -1,0 +1,80 @@
+[gd_scene load_steps=10 format=3 uid="uid://dwnhffwl5018k"]
+
+[ext_resource type="Script" path="res://character_body_2d.gd" id="1_axhlv"]
+[ext_resource type="Texture2D" uid="uid://v4ts3by1d30w" path="res://assets/PNG/Sprites/Astronauts/spaceAstronauts_006.png" id="2_mfn81"]
+[ext_resource type="Texture2D" uid="uid://c7td74k6hg2qe" path="res://assets/PNG/Sprites/Missiles/spaceMissiles_033.png" id="3_8keyc"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m1l5n"]
+radius = 20.0
+height = 50.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mxbyw"]
+size = Vector2(12, 6)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_bexs0"]
+normal = Vector2(-1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_dh67w"]
+normal = Vector2(-5.11522e-07, 1)
+distance = -0.477418
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ffcr3"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_wf18f"]
+normal = Vector2(1, 0)
+
+[node name="Node2D" type="Node2D"]
+position = Vector2(581, 323)
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(3, 2)
+motion_mode = 1
+script = ExtResource("1_axhlv")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(-6, 0)
+shape = SubResource("CapsuleShape2D_m1l5n")
+
+[node name="Marker2D" type="Marker2D" parent="CharacterBody2D"]
+position = Vector2(39, 10)
+
+[node name="CharacterBody2D2" type="CharacterBody2D" parent="."]
+position = Vector2(42, 12)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D2"]
+shape = SubResource("RectangleShape2D_mxbyw")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D2"]
+position = Vector2(2.18501e-05, -0.000607625)
+rotation = 1.56688
+scale = Vector2(0.619662, 0.47898)
+texture = ExtResource("3_8keyc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(3, 2)
+texture = ExtResource("2_mfn81")
+
+[node name="Node" type="Node" parent="."]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="Node"]
+position = Vector2(3, 3)
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Node/CharacterBody2D"]
+position = Vector2(1136, 313)
+scale = Vector2(1.62438, 1.64)
+shape = SubResource("WorldBoundaryShape2D_bexs0")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Node/CharacterBody2D"]
+position = Vector2(579, 3)
+scale = Vector2(2.92227, 0.905124)
+shape = SubResource("WorldBoundaryShape2D_dh67w")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Node/CharacterBody2D"]
+position = Vector2(560, 644)
+scale = Vector2(2.28, 1)
+shape = SubResource("WorldBoundaryShape2D_ffcr3")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Node/CharacterBody2D"]
+position = Vector2(-1, 335)
+scale = Vector2(1.12, 1.6)
+shape = SubResource("WorldBoundaryShape2D_wf18f")
