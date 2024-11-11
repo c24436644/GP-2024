@@ -2,7 +2,7 @@ extends Sprite2D
 
 @export var player:Node2D
 
-var speed:float = 200
+@export var speed:float = 200
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -16,6 +16,6 @@ func _process(delta: float) -> void:
 	
 	to_player = to_player.normalized()
 	
-	global_position = global_position + (to_player * speed * delta)
+	global_position = global_position + (- to_player * speed * delta)
 	
 	pass
