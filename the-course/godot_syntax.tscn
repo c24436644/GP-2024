@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://bnruf0aqua3qm"]
+
+[ext_resource type="Script" path="res://node_2d.gd" id="1_djaeh"]
+[ext_resource type="Texture2D" uid="uid://cxvt8kfmra0w2" path="res://assets/PNG/Sprites X2/Astronauts/spaceAstronauts_014.png" id="2_3qd8c"]
+[ext_resource type="Texture2D" uid="uid://b8tewjkvvok5j" path="res://assets/PNG/Sprites X2/Astronauts/spaceAstronauts_011.png" id="2_nmurr"]
+[ext_resource type="Script" path="res://area_2d.gd" id="3_d2a7h"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bv1id"]
+radius = 39.0
+height = 104.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xmkjw"]
+radius = 45.0
+height = 106.0
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_djaeh")
+
+[node name="Area2D2" type="Area2D" parent="."]
+position = Vector2(383, 233)
+script = ExtResource("3_d2a7h")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Area2D2"]
+position = Vector2(2, 1)
+texture = ExtResource("2_nmurr")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D2"]
+position = Vector2(4, 2)
+shape = SubResource("CapsuleShape2D_bv1id")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(732, 228)
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
+texture = ExtResource("2_3qd8c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(4, 2)
+shape = SubResource("CapsuleShape2D_xmkjw")
+
+[connection signal="area_entered" from="Area2D2" to="Area2D" method="_on_area_2d_2_area_entered"]
