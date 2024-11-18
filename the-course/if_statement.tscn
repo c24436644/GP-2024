@@ -1,6 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://r5gpvyus7nrn"]
+[gd_scene load_steps=4 format=3 uid="uid://r5gpvyus7nrn"]
 
-[ext_resource type="Script" path="res://if_statement.gd" id="1_8w2qs"]
+[ext_resource type="Script" path="res://if_statement.gd" id="1_cl77v"]
+[ext_resource type="Texture2D" uid="uid://c844yfbd26ea8" path="res://sprites/bug.png" id="2_a842j"]
+[ext_resource type="Script" path="res://sprite.gd" id="3_1the6"]
 
 [node name="if_statement" type="Node2D"]
-script = ExtResource("1_8w2qs")
+script = ExtResource("1_cl77v")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(170, 176)
+texture = ExtResource("2_a842j")
+script = ExtResource("3_1the6")
