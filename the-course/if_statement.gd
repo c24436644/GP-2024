@@ -1,19 +1,12 @@
 extends Node2D
 
-
-@export var bug_scene:PackedScene
+func _draw() -> void:
+	var r = get_viewport_rect()
+	r.size.x = r.size.x / 2
+	draw_rect(Rect2(r), Color.RED, true, 10, true)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-
-	var count = 10
-	
-	for i in range(count):
-		var w = bug_scene.instantiate()
-		var p = Vector2(i * 50, 0)
-		w.position = p
-		add_child(w)
-
 	pass # Replace with function body.
 
 
