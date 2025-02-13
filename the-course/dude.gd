@@ -100,6 +100,7 @@ func _physics_process(delta: float) -> void:
 		# move by applying acceration
 		var m = Input.get_axis(forward_input, back_input)
 		acceleration = transform.y * m * speed
+		print(transform.y)
 		velocity = velocity + acceleration * delta	
 		var c = move_and_collide(velocity * delta)
 		
