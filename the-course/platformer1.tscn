@@ -1,0 +1,123 @@
+[gd_scene load_steps=9 format=3 uid="uid://cxmavo6tylluk"]
+
+[ext_resource type="Texture2D" uid="uid://dnku55dcgmtb2" path="res://icon.svg" id="1_tuvkx"]
+[ext_resource type="Script" uid="uid://chp7t4e75sx6k" path="res://jump_fella.gd" id="2_0nau7"]
+[ext_resource type="Script" uid="uid://di7wolsm4r4ep" path="res://enemy_fella.gd" id="3_43jer"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0nau7"]
+size = Vector2(900, 125.539)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_43jer"]
+size = Vector2(128.334, 125)
+
+[sub_resource type="GDScript" id="GDScript_0nau7"]
+resource_name = "coin"
+script/source = "extends Area2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+
+
+func _on_body_entered(body: Node2D) -> void:
+	if body.name == \"Jump_fella\":
+		body.score = body.score + 1
+		self.queue_free()
+	pass # Replace with function body.
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d2hnt"]
+size = Vector2(128.125, 127.701)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_d2hnt"]
+radius = 322.076
+
+[node name="Node2D" type="Node2D"]
+
+[node name="platform" type="StaticBody2D" parent="."]
+position = Vector2(440, 399)
+scale = Vector2(0.762677, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="platform"]
+position = Vector2(1, 0)
+scale = Vector2(7.0625, 1)
+texture = ExtResource("1_tuvkx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="platform"]
+position = Vector2(-2, -1.5)
+shape = SubResource("RectangleShape2D_0nau7")
+
+[node name="platform2" type="StaticBody2D" parent="."]
+position = Vector2(1053, 398)
+scale = Vector2(0.599999, 0.519999)
+
+[node name="Sprite2D" type="Sprite2D" parent="platform2"]
+position = Vector2(1, 0)
+scale = Vector2(7.0625, 1)
+texture = ExtResource("1_tuvkx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="platform2"]
+position = Vector2(-1.99988, 1.23065)
+shape = SubResource("RectangleShape2D_0nau7")
+
+[node name="platform3" type="StaticBody2D" parent="."]
+position = Vector2(1567, 455)
+scale = Vector2(0.599999, 0.519999)
+
+[node name="Sprite2D" type="Sprite2D" parent="platform3"]
+position = Vector2(1, 0)
+scale = Vector2(7.0625, 1)
+texture = ExtResource("1_tuvkx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="platform3"]
+position = Vector2(-2, 1.5)
+shape = SubResource("RectangleShape2D_0nau7")
+
+[node name="Jump_fella" type="CharacterBody2D" parent="."]
+position = Vector2(145, 270)
+scale = Vector2(0.599999, 0.519999)
+script = ExtResource("2_0nau7")
+
+[node name="Sprite2D" type="Sprite2D" parent="Jump_fella"]
+texture = ExtResource("1_tuvkx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Jump_fella"]
+position = Vector2(0.83313, -0.961365)
+shape = SubResource("RectangleShape2D_43jer")
+
+[node name="Camera2D" type="Camera2D" parent="Jump_fella"]
+position = Vector2(21.6668, -5.76929)
+
+[node name="coin_pickup" type="Area2D" parent="."]
+position = Vector2(626, 298)
+scale = Vector2(0.639999, 0.336723)
+script = SubResource("GDScript_0nau7")
+
+[node name="Sprite2D" type="Sprite2D" parent="coin_pickup"]
+texture = ExtResource("1_tuvkx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="coin_pickup"]
+position = Vector2(0, -1.48492)
+shape = SubResource("RectangleShape2D_d2hnt")
+
+[node name="enemy_fella" type="CharacterBody2D" parent="."]
+position = Vector2(1139, 288)
+script = ExtResource("3_43jer")
+
+[node name="Sprite2D" type="Sprite2D" parent="enemy_fella"]
+texture = ExtResource("1_tuvkx")
+
+[node name="Area2D" type="Area2D" parent="enemy_fella"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemy_fella/Area2D"]
+shape = SubResource("CircleShape2D_d2hnt")
+
+[connection signal="body_entered" from="coin_pickup" to="coin_pickup" method="_on_body_entered"]
+[connection signal="body_entered" from="enemy_fella/Area2D" to="enemy_fella" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="enemy_fella/Area2D" to="enemy_fella" method="_on_area_2d_body_exited"]
